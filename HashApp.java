@@ -64,18 +64,20 @@ public class HashApp{
 					///////////////////////////////////////
 					System.out.print("Input number for rehashing: ");
 					r_num = sc.nextInt();
+					try {
 						for (int i=0; i<data_size; i++){
 							StringBuilder sb = new StringBuilder();
 							char[] letters = dataTable.table[i].key.toCharArray();
-							System.out.println("truoc loop for" + i);
 
 							for (char ch : letters) {
 	    						sb.append((byte) ch);
 							}
-							System.out.println("sau loop for" + i);
 
 							colli += hashTable_i.addHashInc(sb.toString(), r_num, dataTable.table[i], hashTable_i);
 						}
+					} catch(Exception e){
+						System.out.println("Hang");
+					}
 					System.out.println("Collison(s): " + colli);
 					/////////////////////////////////////////
 					/*
