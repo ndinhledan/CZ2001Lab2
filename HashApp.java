@@ -78,8 +78,20 @@ public class HashApp{
 					System.out.println("============================");
 
 					for (int i=0; i< table_i_size; i++){
-						System.out.println(hashTable_i.h_table[i].data.key + " ------ " + hashTable_i.h_table[i].data.total_slots 
+						if (hashTable_i.h_table[i].data.key != null){
+							StringBuilder sb = new StringBuilder();
+							char[] letters = hashTable_i.h_table[i].data.key.toCharArray();
+
+							for (char ch : letters) {
+	    						sb.append((byte) ch);
+	    					}
+						System.out.println(hashTable_i.h_table[i].data.key + " ------ "+ sb.toString() + " ------ " + hashTable_i.h_table[i].data.total_slots 
 							+ " ------ " + hashTable_i.h_table[i].data.avai_slots + " ------ " + hashTable_i.h_table[i].isEmpty);
+						}
+						else {
+							System.out.println(hashTable_i.h_table[i].data.key + " ------ "+ "null" + " ------ " + hashTable_i.h_table[i].data.total_slots 
+							+ " ------ " + hashTable_i.h_table[i].data.avai_slots + " ------ " + hashTable_i.h_table[i].isEmpty);	
+						}
 					}
 					System.out.println(hashTable_i.entryNum);
 					break;
@@ -110,10 +122,22 @@ public class HashApp{
 					/////////////////////////////////////////
 					System.out.println("------------Hash Table Mul------------");
 					System.out.println("============================");
-
+////////////////////////print out table////////////////////////
 					for (int i=0; i< table_m_size; i++){
-						System.out.println(hashTable_m.h_table[i].data.key + " ------ " + hashTable_m.h_table[i].data.total_slots 
-							+ " ------ " + hashTable_m.h_table[i].data.avai_slots + " ------ " + hashTable_m.h_table[i].isEmpty);
+						if (hashTable_m.h_table[i].data.key != null){
+							StringBuilder sb = new StringBuilder();
+							char[] letters = hashTable_m.h_table[i].data.key.toCharArray();
+
+							for (char ch : letters) {
+	    						sb.append((byte) ch);
+							}
+							System.out.println(hashTable_m.h_table[i].data.key + " ------ " + sb.toString()  + " ------ " + hashTable_m.h_table[i].data.total_slots 
+								+ " ------ " + hashTable_m.h_table[i].data.avai_slots + " ------ " + hashTable_m.h_table[i].isEmpty);
+						}
+						else {
+							System.out.println(hashTable_m.h_table[i].data.key + " ------ " + "null" + " ------ " + hashTable_m.h_table[i].data.total_slots 
+								+ " ------ " + hashTable_m.h_table[i].data.avai_slots + " ------ " + hashTable_m.h_table[i].isEmpty);	
+						}
 					}
 					System.out.println(hashTable_m.entryNum);
 					break;
