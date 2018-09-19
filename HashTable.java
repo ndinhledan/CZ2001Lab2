@@ -39,7 +39,7 @@ public class HashTable{
 
 	public long mulHash(int key, int size, int num){
 		long a = (int) 8*(size/num) +5;
-		return ((key*a) % 23);
+		return ((key*a) % 23 + 1);
 	}
 
 	////////////////////////////////////////////////////////
@@ -57,8 +57,8 @@ public class HashTable{
 				loc = (int) hash(loc+d, table.size);
 			} while (table.h_table[loc].isEmpty ==0 && loc!=cod); 
 			if (loc == cod) {
-				System.out.println("Cannot add!!");
-				System.out.printf("%s has %d collision(s)!\n", data.key, colli);
+				//System.out.println("Cannot add!!");
+				//System.out.printf("%s has %d collision(s)!\n", data.key, colli);
 				return colli; // cannot find space
 			}
 		}
@@ -68,7 +68,7 @@ public class HashTable{
 		table.h_table[loc].isEmpty =0;
 		table.entryNum++;
 		if (colli !=0) {
-			System.out.printf("%s has %d collision(s)!\n", data.key, colli);
+			//System.out.printf("%s has %d collision(s)!\n", data.key, colli);
 	}
 	return colli;
 }
@@ -79,8 +79,11 @@ public class HashTable{
 		int cod = loc;
 		int colli =0;
 
+		System.out.println("ajaja");
+
 		if (table.h_table[loc].isEmpty ==0){
 			do {
+				colli++;
 				long d = mulHash(loc, table.size, num);
 				loc = (int) hash(loc+d, table.size);
 			} while (table.h_table[loc].isEmpty ==0 && loc!=cod); 

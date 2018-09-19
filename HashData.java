@@ -31,7 +31,7 @@ public class HashData{
 
 	public void iniTable(HashEntry[] table, int size){
 		int counter =0;
-		int d = (int) (Math.random()*1000);
+		int d = (int) (Math.random()*200);
 		System.out.println(d);
 
 		for (int i=0; i<size; i++){
