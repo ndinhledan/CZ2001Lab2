@@ -41,13 +41,15 @@ public class HashApp{
 					dataTable.size = data_size;
 					///////////////////////////////////////////////
 					dataTable.iniTable(dataTable.table, data_size);
+					System.out.println(dataTable.table[0].key);
+					/*
 					System.out.println("------------Data Table------------");
 					System.out.println("============================");
 					//////////////////////////////////////////////
 					for (int i=0; i<data_size; i++){
 						System.out.println(dataTable.table[i].key + " ------ " + dataTable.table[i].total_slots 
 							+ " ------ " + dataTable.table[i].avai_slots + " ------ " );
-					}
+					} */
 					break;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////Hash Table Inc
@@ -62,18 +64,21 @@ public class HashApp{
 					///////////////////////////////////////
 					System.out.print("Input number for rehashing: ");
 					r_num = sc.nextInt();
-					for (int i=0; i<data_size; i++){
-						StringBuilder sb = new StringBuilder();
-						char[] letters = dataTable.table[i].key.toCharArray();
+						for (int i=0; i<data_size; i++){
+							StringBuilder sb = new StringBuilder();
+							char[] letters = dataTable.table[i].key.toCharArray();
+							System.out.println("truoc loop for" + i);
 
-						for (char ch : letters) {
-    						sb.append((byte) ch);
+							for (char ch : letters) {
+	    						sb.append((byte) ch);
+							}
+							System.out.println("sau loop for" + i);
+
+							colli += hashTable_i.addHashInc(sb.toString(), r_num, dataTable.table[i], hashTable_i);
 						}
-
-						colli += hashTable_i.addHashInc(sb.toString(), r_num, dataTable.table[i], hashTable_i);
-					}
 					System.out.println("Collison(s): " + colli);
 					/////////////////////////////////////////
+					/*
 					System.out.println("------------Hash Table Inc------------");
 					System.out.println("============================");
 
@@ -92,8 +97,9 @@ public class HashApp{
 							System.out.println(hashTable_i.h_table[i].data.key + " ------ "+ "null" + " ------ " + hashTable_i.h_table[i].data.total_slots 
 							+ " ------ " + hashTable_i.h_table[i].data.avai_slots + " ------ " + hashTable_i.h_table[i].isEmpty);	
 						}
-					}
-					System.out.println(hashTable_i.entryNum);
+					} */
+					System.out.println("I_Table entry: " + hashTable_i.entryNum);
+					
 					break;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////Hash Table Mul
@@ -116,10 +122,11 @@ public class HashApp{
     						sb.append((byte) ch);
 						}
 
-						colli_m += hashTable_m.addHashInc(sb.toString(), r_num, dataTable.table[i], hashTable_m);
+						colli_m += hashTable_m.addHashMul(sb.toString(), r_num, dataTable.table[i], hashTable_m);
 					}
 					System.out.println("Collison(s): " + colli_m);
 					/////////////////////////////////////////
+					/*
 					System.out.println("------------Hash Table Mul------------");
 					System.out.println("============================");
 ////////////////////////print out table////////////////////////
@@ -138,8 +145,8 @@ public class HashApp{
 							System.out.println(hashTable_m.h_table[i].data.key + " ------ " + "null" + " ------ " + hashTable_m.h_table[i].data.total_slots 
 								+ " ------ " + hashTable_m.h_table[i].data.avai_slots + " ------ " + hashTable_m.h_table[i].isEmpty);	
 						}
-					}
-					System.out.println(hashTable_m.entryNum);
+					} */
+					System.out.println("M_Table entry: " + hashTable_m.entryNum);
 					break;
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////Entry Number
